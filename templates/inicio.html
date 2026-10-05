@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mb-4 text-center">Selecciona un Tema de Estudio</h2>
+<div class="row justify-content-center">
+    {% if temas %}
+        {% for tema in temas %}
+        <div class="col-md-5 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h3 class="card-title text-primary">{{ tema.nombre }}</h3>
+                    <p class="card-text mt-3">{{ tema.descripcion }}</p>
+                    <a href="{% url 'inicio:detalle' tema.id %}" class="btn btn-outline-primary mt-2">Ver Imágenes</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-warning">No hay temas configurados todavía.</div>
+    {% endif %}
+</div>
+{% endblock %}
